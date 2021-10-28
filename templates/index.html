@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Upcoming Events</h1>
+    <form action="/events" method="post">
+        <li>
+            <label for="event_date">Event date: </label>
+            <input type="text" name="event_date" id="event_date">
+        </li>
+        <br>
+        <li>
+            <label for="guests">Number of Guests: </label>
+            <input type="text" name="event_guests" id="event_guests">
+        </li>
+        <br>
+        <li>
+            <label for="event_location">Event Location: </label>
+            <input type="text" name="event_location" id="event_location">
+        </li>
+        <br>
+        <li>
+            <label for="event_name">Event name: </label>
+            <input type="text" name="event_name" id="event_name">
+        </li>
+        <br>
+        <li>
+            <label for="description">Description: </label>
+            <textarea name="description" rows="2" cols="30"></textarea>
+        </li>
+        <br>
+        <input type="submit" value="Add Event">
+    </form>
+
+    {% for event in events %}  
+    <div>
+        <p> Event: <b> {{ event.event_name }}</b>, Recurring Event?:
+            {% if event.recurring %}
+            <span> &#9989 </span>
+            {% endif %}
+        </p>
+        
+        <ul>
+            <li>
+                Date: <b>{{ event.date}}</b>
+            </li>
+            <li>
+                Number of Guests <b>{{ event.guests}}</b>
+            </li>
+            <li>
+                Event Location: <b>{{ event.location}}</b>
+            </li>
+            <li>
+                Event Description: <b>{{ event.description }}</b>
+            </li>
+            
+        </ul>
+    </div>
+    {% endfor %}
+
+{% endblock %}
