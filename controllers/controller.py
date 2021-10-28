@@ -1,6 +1,6 @@
 from flask import render_template, request
 from app import app
-from models.eventslist import events, add_new_event
+from models.eventslist import events, add_new_event, remove_event_in_list
 from models.event import Event
 
 @app.route('/events')
@@ -17,3 +17,8 @@ def add_event():
     new_event = Event(event_date, event_name, event_guests, event_location, event_description, False)
     add_new_event(new_event)
     return render_template('index.html', title='Home', events=events)
+
+@app.route('/events/delete/<event_name>')
+def remove_event(event_name):
+    remove_event_in_list(event_name)
+    return render_template('index.html', title="Home", events=events)
