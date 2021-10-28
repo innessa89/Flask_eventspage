@@ -5,8 +5,10 @@
     <h1>Upcoming Events</h1>
     <form action="/events" method="post">
         <li>
-            <label for="event_date">Event date: </label>
-            <input type="text" name="event_date" id="event_date">
+            <label for="event_date">Event date:</label>
+            <input type="date" id="event_date" name="event_date"
+                value="2021-10-28"
+                min="2021-10-28" max="2022-12-31">
         </li>
         <br>
         <li>
